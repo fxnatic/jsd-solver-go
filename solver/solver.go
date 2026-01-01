@@ -252,7 +252,7 @@ func (s *OneshotSolver) parseScript(params *ChallengeParams) error {
 
 	// os.WriteFile("deobf.js", []byte(deobf), 0644)
 
-	sitekeyRe := regexp.MustCompile(`xkKZ4:\s*['"]([^'"]+)['"]`)
+	sitekeyRe := regexp.MustCompile(`(?:window\.)?\s*_cf_chl_opt\s*=\s*\{\s*\w+:\s*['"]([^'"]+)['"]`)
 	if m := sitekeyRe.FindStringSubmatch(script); len(m) > 1 {
 		params.Sitekey = m[1]
 	}
